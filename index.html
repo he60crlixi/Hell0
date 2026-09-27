@@ -2,21 +2,314 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的第一个网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人民群众服务</title>
     <style>
-        body { 
-            font-family: "Microsoft YaHei", sans-serif; 
-            text-align: center; 
-            padding: 80px; 
-            background: #f0f0f0;
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(180deg, #eef8ff 0%, #f5fbff 30%, #ffffff 100%);
+            color: #1d2b36;
         }
-        h1 { color: #2ea44f; }
-        p { font-size: 18px; color: #555; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 30px;
+            border-bottom: 1px solid rgba(13, 90, 154, 0.12);
+        }
+
+        .brand {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0f5ea8;
+            letter-spacing: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 22px;
+            font-size: 0.95rem;
+            color: #45617a;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 30px;
+            padding: 60px 0 40px;
+        }
+
+        .hero h1 {
+            margin: 0 0 16px;
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            line-height: 1.15;
+            color: #0d2238;
+        }
+
+        .highlight {
+            color: #0f6ec7;
+        }
+
+        .hero p {
+            margin: 0 0 28px;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: #4d6477;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, #1a73e8, #14a7d6);
+            color: white;
+            box-shadow: 0 12px 28px rgba(26, 115, 232, 0.25);
+        }
+
+        .btn.secondary {
+            background: #edf5ff;
+            color: #0f5ea8;
+            border: 1px solid rgba(15, 94, 168, 0.15);
+        }
+
+        .card {
+            background: linear-gradient(145deg, #ffffff, #eef6ff);
+            border: 1px solid rgba(26, 115, 232, 0.1);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 25px 50px rgba(17, 74, 126, 0.08);
+        }
+
+        .info-box {
+            display: grid;
+            gap: 18px;
+        }
+
+        .metric {
+            background: white;
+            border-radius: 18px;
+            padding: 18px 20px;
+            border: 1px solid rgba(15, 94, 168, 0.08);
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.8rem;
+            color: #0f5ea8;
+            margin-bottom: 6px;
+        }
+
+        .section {
+            margin-top: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: #0d2238;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .feature {
+            background: white;
+            border-radius: 20px;
+            padding: 26px 22px;
+            border: 1px solid rgba(15, 94, 168, 0.08);
+            box-shadow: 0 10px 22px rgba(16, 86, 144, 0.04);
+        }
+
+        .feature .icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ddf0ff, #eaf7ff);
+            font-size: 1.5rem;
+        }
+
+        .feature h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            color: #0d2238;
+        }
+
+        .feature p {
+            margin: 0;
+            line-height: 1.8;
+            color: #5b7186;
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            color: #5b7186;
+            font-size: 0.95rem;
+            padding-top: 26px;
+            border-top: 1px solid rgba(13, 90, 154, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>🎉 欢迎来到我的第一个网站！</h1>
-    <p>这是 diaonan 仓库的主页</p>
-    <p>现在可以在这里写任何你想展示的内容</p>
+    <div class="container">
+        <header class="header">
+            <div class="brand">人民群众服务</div>
+            <nav class="nav">
+                <a href="#服务理念">服务理念</a>
+                <a href="#服务内容">服务内容</a>
+                <a href="#便民举措">便民举措</a>
+                <a href="#联系我们">联系我们</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div>
+                    <h1>用最先进的技术，<span class="highlight">服务最广大人民群众</span></h1>
+                    <p>
+                        以人民为中心，推动数字化创新与公共服务协同发展，构建高效、便捷、透明、温暖的服务体系，
+                        让每���位群众都能享受到更优质、更公平、更有温度的服务体验。
+                    </p>
+                    <div class="actions">
+                        <a class="btn primary" href="#服务内容">了解更多</a>
+                        <a class="btn secondary" href="#联系我们">立即联系</a>
+                    </div>
+                </div>
+
+                <div class="card info-box">
+                    <div class="metric">
+                        <strong>24/7</strong>
+                        全天候服务支持
+                    </div>
+                    <div class="metric">
+                        <strong>100%</strong>
+                        便民信息公开透明
+                    </div>
+                    <div class="metric">
+                        <strong>1站式</strong>
+                        一体化服务入口
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="服务理念">
+                <h2 class="section-title">服务理念</h2>
+                <div class="features">
+                    <article class="feature">
+                        <div class="icon">🤝</div>
+                        <h3>以民为本</h3>
+                        <p>围绕群众需求，持续优化服务流程，提升群众获得感、幸福感和安全感。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">💡</div>
+                        <h3>创新驱动</h3>
+                        <p>运用数字化、智能化手段，推动服务升级，让每一项服务更高效、更便捷。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">📍</div>
+                        <h3>共建共享</h3>
+                        <p>聚焦协同共治，整合资源与力量，构筑更广泛、更稳定的服务网络。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="服务内容">
+                <h2 class="section-title">服务内容</h2>
+                <div class="features">
+                    <article class="feature">
+                        <div class="icon">🧭</div>
+                        <h3>政策咨询</h3>
+                        <p>提供权威政策解读与指导，帮助群众快速理解政策内容和办理路径。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">🛎️</div>
+                        <h3>便民办理</h3>
+                        <p>推进线上线下服务融合，减少中间环节，让群众办事更加省时省力。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">📣</div>
+                        <h3>意见反馈</h3>
+                        <p>建立畅通反馈渠道，及时收集建议与诉求，持续改进服务质量。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="便民举措">
+                <h2 class="section-title">便民举措</h2>
+                <div class="features">
+                    <article class="feature">
+                        <div class="icon">📱</div>
+                        <h3>智能问答</h3>
+                        <p>利用智能化平台，快速回应群众关切，提升咨询效率与满意度。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">🧾</div>
+                        <h3>一网通办</h3>
+                        <p>打通办理入口，减少重复材料和重复跑动，提升办事体验。</p>
+                    </article>
+                    <article class="feature">
+                        <div class="icon">🌍</div>
+                        <h3>惠及基层</h3>
+                        <p>让优质服务覆盖广泛人群，让每一个角落都感受到发展成果。</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer" id="联系我们">
+            打造更开放、更温暖、更高效的公共服务体系，让每一位群众都能享受公平、便捷、优质的服务。
+        </footer>
+    </div>
 </body>
 </html>
